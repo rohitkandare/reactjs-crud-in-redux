@@ -1,0 +1,56 @@
+.form-style-1 {
+	margin:10px auto;
+	max-width: 400px;
+	padding: 20px 12px 10px 20px;
+}
+.form-style-1 li {
+	padding: 0;
+	display: block;
+	list-style: none;
+	margin: 10px 0 0 0;
+}
+.form-style-1 label{
+	margin:0 0 3px 0;
+	padding:0px;
+	display:block;
+	font-weight: bold;
+}
+
+.left{ grid-area: leftSide;}
+.right{ grid-area: rigthSide;}
+
+.grid-container {
+	display: grid;
+	grid-template-areas:
+	  'leftSide leftSide leftSide rigthSide rigthSide rigthSide';
+	grid-gap: 10px;
+	background-color:#f5f6fa;
+	padding: 10px;
+  }
+  .grid-container > div {
+	background-color: rgba(255, 255, 255, 0.8);
+	padding: 20px 0;
+	
+  }
+
+  table {
+	width: 100%;
+  }
+  td, th {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+  }
+
+  .tableHeading{
+	  background-color: #00a8ff;
+	  height: 40px;
+	  margin-top:0px;
+  }
+  .tableHeading p{
+	background-color: #00a8ff;
+	text-align: center;
+	padding: 5px;
+	color: white;
+	
+}

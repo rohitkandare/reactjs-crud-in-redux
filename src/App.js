@@ -1,12 +1,12 @@
 import React from 'react';
-
+import Head from './header/Head'
+import View from './view/View';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-       <p>Hello world</p>
-      </header>
+      <Head />
+      <View />
     </div>
   );
 }
