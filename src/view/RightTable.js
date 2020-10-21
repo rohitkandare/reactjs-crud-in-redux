@@ -16,20 +16,20 @@ function RightTable(props) {
                 <th>ACTION</th>
             </tr>
             {  
-                props.users.map((user, index) => (
+                // props.users.map((user, index) => (
 
-                    <tr key={index}>
-                        <td>{index}</td>
-                        <td>{user.fristName}</td>
-                        <td>{user.lastName}</td>
-                        <td>{user.email}</td>
-                        <tr>
-                            <td>UPDATE</td>
-                            <td>VIEW</td>
-                            <td>DELETE</td>
-                        </tr>
-                    </tr>
-                ))
+                //     <tr key={index}>
+                //         <td>{index}</td>
+                //         <td>{user.fristName}</td>
+                //         <td>{user.lastName}</td>
+                //         <td>{user.email}</td>
+                //         <tr>
+                //             <td>UPDATE</td>
+                //             <td>VIEW</td>
+                //             <td>DELETE</td>
+                //         </tr>
+                //     </tr>
+                // ))
             }
           
         </table>
