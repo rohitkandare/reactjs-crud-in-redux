@@ -1,12 +1,14 @@
 import React from 'react'
 
 function SelectTag(props) {
-    const users = props.data
+    const userData = props.userData
+    const handleChange = props.func
     return (
         <>
             <select name="numType"
                 id="select"
-                value={users}
+                value={userData}
+                onChange={handleChange}
             >
                 <option value="office">Office</option>
                 <option value="home">Home</option>

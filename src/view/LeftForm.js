@@ -1,10 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import InputTag from './formCompnent/InputTag';
 import SelectTag from './formCompnent/SelectTag';
 
-function LeftForm({ userTemplate }) {
-    const [userData, setUserData] = useState(userTemplate)
-    const [data, setData] = useState([])
+function LeftForm({ setUserData, userData, data, setData, btn, setBtn }) {
 
     const handleChange = (event) => {
         const { name, value } = event.target
@@ -14,12 +12,18 @@ function LeftForm({ userTemplate }) {
 
         })
     }
+    function handleClickRecord(e) {
+        setData([])
+        setBtn(true)
+
+    }
     const addUser = (event) => {
         event.preventDefault()
-        setUserData({
-            ...userData,
-            [userData]: data,
-        })
+        console.log(data)
+        const datass = [...userData, data]
+        setUserData(
+            datass
+        )
     }
     const formData = [
         {
@@ -67,14 +71,15 @@ function LeftForm({ userTemplate }) {
                     <li>
                         <label>Number</label>
                         <InputTag formData={formData[3]} userData={data.number} func={handleChange} />
-                        <SelectTag data={data.phoneType} />
+                        <SelectTag userData={data.phoneType} func={handleChange} />
                     </li>
                     <li>
                         <label>DOB </label>
                         <InputTag formData={formData[4]} userData={data.dob} func={handleChange} />
                     </li>
                     <li>
-                        <input type="submit" />
+
+                        {btn ? <input type="submit" /> : <button onClick={(e) => handleClickRecord(e)}>CREATE NEW RECORD</button>}
                     </li>
                 </ul>
             </form>

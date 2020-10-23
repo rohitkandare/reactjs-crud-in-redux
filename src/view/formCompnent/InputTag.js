@@ -1,13 +1,9 @@
 import React from 'react'
 
-
 function InputTag(props) {
     const userData = props.userData
     const formData = props.formData
-    const handleChange = props.fun
-    console.log(userData)
-
-
+    const handleChange = props.func
     return (
         <>
             <input
@@ -16,6 +12,7 @@ function InputTag(props) {
                 placeholder={formData.placeholder}
                 value={userData}
                 onChange={handleChange}
+                required
             />
         </>
     )
