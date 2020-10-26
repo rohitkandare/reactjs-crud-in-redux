@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState} from 'react'
 import InputTag from './formCompnent/InputTag';
 import SelectTag from './formCompnent/SelectTag';
+import { formData, validation } from './formCompnent/FormFunction'
 
-function LeftForm({ setUserData, userData, data, setData, btn, setBtn }) {
-
+function ContactForm({ setUserData, userData, data, setData, btn, setBtn }) {
+    const [error, setError] = useState()
     const handleChange = (event) => {
         const { name, value } = event.target
+
         setData({
             ...data,
             [name]: value
@@ -17,41 +19,20 @@ function LeftForm({ setUserData, userData, data, setData, btn, setBtn }) {
         setBtn(true)
 
     }
+
     const addUser = (event) => {
         event.preventDefault()
         console.log(data)
-        const datass = [...userData, data]
-        setUserData(
-            datass
-        )
-    }
-    const formData = [
-        {
-            name: "fristName",
-            placeholder: "Enter Frist Name",
-            type: "text"
-        },
-        {
-            name: "lastName",
-            placeholder: "Enter Last Name",
-            type: "text"
-        },
-        {
-            name: "email",
-            placeholder: "Enter Email",
-            type: "email"
-        },
-        {
-            name: "number",
-            placeholder: "Enter A Number",
-            type: "number"
-        },
-        {
-            name: "dob",
-            placeholder: "Enter A DOB",
-            type: "date"
+
+        if (validation(error, setError, data)) {
+            const datass = [...userData, data]
+            setUserData(
+                datass
+            )
         }
-    ]
+
+    }
+
     return (
         <div className="left">
             <div className="tableHeading">
@@ -83,9 +64,9 @@ function LeftForm({ setUserData, userData, data, setData, btn, setBtn }) {
                     </li>
                 </ul>
             </form>
-
+            <p>{error}</p>
         </div>
     )
 }
 
-export default LeftForm
+export default ContactForm
