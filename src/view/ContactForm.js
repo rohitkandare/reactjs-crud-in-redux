@@ -1,42 +1,14 @@
-import React, { useState} from 'react'
+import React, { useState } from 'react'
 import InputTag from './formCompnent/InputTag';
 import SelectTag from './formCompnent/SelectTag';
-import { formData, validation } from './formCompnent/FormFunction'
+import { formData } from './formCompnent/FormFunction'
 
-function ContactForm({ setUserData, userData, data, setData, btn, setBtn }) {
-    const [error, setError] = useState()
-    const handleChange = (event) => {
-        const { name, value } = event.target
-
-        setData({
-            ...data,
-            [name]: value
-
-        })
-    }
-    function handleClickRecord(e) {
-        setData([])
-        setBtn(true)
-
-    }
-
-    const addUser = (event) => {
-        event.preventDefault()
-        console.log(data)
-
-        if (validation(error, setError, data)) {
-            const datass = [...userData, data]
-            setUserData(
-                datass
-            )
-        }
-
-    }
+function ContactForm({ data, handleChange, addUser, error }) {
 
     return (
         <div className="left">
             <div className="tableHeading">
-                <p>CREATE</p>
+                <p>FORM</p>
             </div>
             <form onSubmit={addUser}>
                 <ul className="form-style-1">
@@ -59,8 +31,7 @@ function ContactForm({ setUserData, userData, data, setData, btn, setBtn }) {
                         <InputTag formData={formData[4]} userData={data.dob} func={handleChange} />
                     </li>
                     <li>
-
-                        {btn ? <input type="submit" /> : <button onClick={(e) => handleClickRecord(e)}>CREATE NEW RECORD</button>}
+                        <input type="submit" />
                     </li>
                 </ul>
             </form>

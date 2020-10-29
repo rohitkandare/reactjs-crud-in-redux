@@ -12,7 +12,6 @@ function InputTag(props) {
                 placeholder={formData.placeholder}
                 value={userData}
                 onChange={handleChange}
-                // required
             />
         </>
     )

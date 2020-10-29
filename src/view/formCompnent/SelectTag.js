@@ -9,6 +9,7 @@ function SelectTag(props) {
                 id="select"
                 value={userData}
                 onChange={handleChange}
+                name="phoneType"
             >
                 <option value="office">Office</option>
                 <option value="home">Home</option>

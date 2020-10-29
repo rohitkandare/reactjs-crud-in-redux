@@ -77,45 +77,8 @@ function validation(error, setError, data) {
 
 }
 
-function handleDelete(e, itemToBeDeleted, users, newArr, setUserData, setnewArr) {
-    e.preventDefault()
-    users.filter((value, index) => {
-        if (index !== itemToBeDeleted) {
-            newArr.push(value)
-        }
-    })
-    setUserData(newArr)
-    setnewArr([])
-}
-
-function handleUpdate(e, itemToBeUpdate,users,setData,newArr,setnewArr,setUserData,setBtn) {
-    e.preventDefault()
-   users.filter((value, index) => {
-        if (index === itemToBeUpdate) {
-           setData(value)
-        }
-        if (index !== itemToBeUpdate) {
-            newArr.push(value)
-        }
-    })
-   setUserData(newArr)
-    setnewArr([])
-   setBtn(true)
-}
-
-function handleView(e, itemToBeUpdate, users, setData, setnewArr, setBtn) {
-    e.preventDefault()
-   users.filter((user, i) => {
-        if (i === itemToBeUpdate) {
-           setData(user)
-        }
-    })
-    setnewArr([])
-   setBtn(false)
-}
-
 export default FormFunction;
 
-export { validation, formData, handleDelete , handleUpdate , handleView}
+export { validation, formData }
 
 
