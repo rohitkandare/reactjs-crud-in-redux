@@ -3,6 +3,8 @@ import ContactForm from './ContactForm'
 import Contactlist from './ContactList'
 import './view.css'
 import { validation } from './formCompnent/FormFunction'
+import { addContact } from '../action/index'
+import { useDispatch } from "react-redux";
 
 function View() {
 
@@ -10,6 +12,7 @@ function View() {
     const [data, setData] = useState([])
     const [error, setError] = useState()
     const [newArr, setnewArr] = useState([])
+    const dispatch = useDispatch();
     const handleChange = (event) => {
         const { name, value } = event.target
         setData({
@@ -22,10 +25,7 @@ function View() {
         event.preventDefault()
         if (validation(error, setError, data)) {
             const datass = [...userData, data]
-            setUserData(
-                datass
-            )
-
+            dispatch(addContact(datass))
         }
 
     }
@@ -55,7 +55,7 @@ function View() {
     return (
         <div className="grid-container">
             <ContactForm data={data} error={error} handleChange={handleChange} addUser={addUser} />
-            <Contactlist users={userData} handleUpdate={handleUpdate} handleDelete={handleDelete} />
+            <Contactlist handleUpdate={handleUpdate} handleDelete={handleDelete} />
         </div>
 
     )
