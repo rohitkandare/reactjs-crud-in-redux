@@ -1,6 +1,6 @@
 import React from 'react'
-import {connect} from 'react-redux'
-function ContactList({ users, handleUpdate, handleDelete , todos}) {
+import { connect } from 'react-redux'
+function ContactList({ handleUpdate, handleDelete, user }) {
     return (
         <div className="right">
             <div className="tableHeading">
@@ -18,8 +18,7 @@ function ContactList({ users, handleUpdate, handleDelete , todos}) {
                     <th>ACTION</th>
                 </tr>
                 {
-                    todos.map((user, index) => (
-
+                    user.map((user, index) => (
                         <tr key={index}>
                             <td>{index}</td>
                             <td>{user.firstName}</td>
@@ -41,7 +40,7 @@ function ContactList({ users, handleUpdate, handleDelete , todos}) {
 
     )
 }
-const mapStateToprops = (state)=>({
-    todos : state.contact.state.data
+const mapStateToprops = (state) => ({
+    user: state.contact.data
 })
 export default connect(mapStateToprops)(ContactList)

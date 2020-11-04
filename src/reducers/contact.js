@@ -1,16 +1,17 @@
 const initialState = {
-    data:[]
+    data: []
 }
 
 const contacts = (state = initialState, action) => {
-    console.log(state.data)
     switch (action.type) {
         case 'ADD_CONTACT':
-            return {...state, ...state.data, state:{data:action.data}}
+            return { ...state, data: [...state.data, action.payload] }
+        case 'UPDATE_CONTACT':
+            return { ...state, data: action.payload }
         case 'DELETE_CONTACT':
-            return {}
+            return { ...state, data: action.payload }
         default:
-            return { state }
+            return { ...state }
     }
 }
 

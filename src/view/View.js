@@ -3,12 +3,10 @@ import ContactForm from './ContactForm'
 import Contactlist from './ContactList'
 import './view.css'
 import { validation } from './formCompnent/FormFunction'
-import { addContact } from '../action/index'
-import { useDispatch } from "react-redux";
+import { addContact, deleteContact, updateContact } from '../action/index'
+import { connect, useDispatch } from "react-redux";
 
-function View() {
-
-    const [userData, setUserData] = useState([])
+function View({ user }) {
     const [data, setData] = useState([])
     const [error, setError] = useState()
     const [newArr, setnewArr] = useState([])
@@ -24,14 +22,13 @@ function View() {
     const addUser = (event) => {
         event.preventDefault()
         if (validation(error, setError, data)) {
-            const datass = [...userData, data]
-            dispatch(addContact(datass))
+            dispatch(addContact(data))
         }
 
     }
     function handleUpdate(e, itemToBeUpdate) {
         e.preventDefault()
-        userData.filter((value, index) => {
+        user.filter((value, index) => {
             if (index === itemToBeUpdate) {
                 setData(value)
             }
@@ -39,17 +36,17 @@ function View() {
                 newArr.push(value)
             }
         })
-        setUserData(newArr)
+        dispatch(updateContact(newArr))
         setnewArr([])
     }
     function handleDelete(e, itemToBeDeleted) {
         e.preventDefault()
-        userData.filter((value, index) => {
+        user.filter((value, index) => {
             if (index !== itemToBeDeleted) {
                 newArr.push(value)
             }
         })
-        setUserData(newArr)
+        dispatch(deleteContact(newArr))
         setnewArr([])
     }
     return (
@@ -61,5 +58,8 @@ function View() {
     )
 }
 
+const mapStateToprops = (state) => ({
+    user: state.contact.data
+})
 
-export default View
+export default connect(mapStateToprops)(View)
