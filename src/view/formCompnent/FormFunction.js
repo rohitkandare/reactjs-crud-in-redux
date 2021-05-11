@@ -4,7 +4,7 @@ import React from 'react'
 
 const formData = [
     {
-        name: "fristName",
+        name: "firstName",
         placeholder: "Enter Frist Name",
         type: "text"
     },
@@ -34,7 +34,7 @@ function FormFunction() {
 }
 
 function validation(error, setError, data) {
-    if (!data.fristName) {
+    if (!data.firstName) {
         setError("Empty Frist Name !!")
         return false
     }

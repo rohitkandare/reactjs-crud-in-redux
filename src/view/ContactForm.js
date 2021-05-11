@@ -14,7 +14,7 @@ function ContactForm({ data, handleChange, addUser, error }) {
                 <ul className="form-style-1">
                     <li>
                         <label>Full Name</label>
-                        <InputTag formData={formData[0]} userData={data.fristName} func={handleChange} />
+                        <InputTag formData={formData[0]} userData={data.firstName} func={handleChange} />
                         <InputTag formData={formData[1]} userData={data.lastName} func={handleChange} />
                     </li>
                     <li>
